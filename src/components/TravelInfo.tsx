@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plane, Train, Car, MapPin, Calendar, Sun, Umbrella } from 'lucide-react';
+import { Plane, Brain as Train, Car, MapPin, Calendar, Sun, Umbrella } from 'lucide-react';
 import { weatherInfo } from '../data/mockData';
 import Accordion from './ui/Accordion';
 
