@@ -1,40 +1,20 @@
 import React from 'react';
-import { MapPin, Clock, Camera, Info } from 'lucide-react';
-
-const attractions = [
-  {
-    id: 1,
-    name: "Dassam Falls",
-    location: "Taimara, Bundu",
-    description: "A spectacular 144-feet waterfall on the Kanchi river, perfect for photography and nature lovers.",
-    image: "https://images.pexels.com/photos/1552058/pexels-photo-1552058.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
-    bestTime: "Post Monsoon",
-    activities: ["Photography", "Nature Walk", "Picnic"],
-    featured: true
-  },
-  {
-    id: 2,
-    name: "Jagannath Temple Ranchi",
-    location: "Ranchi",
-    description: "An architectural marvel inspired by Puri's Jagannath Temple, showcasing beautiful craftsmanship.",
-    image: "https://images.pexels.com/photos/3699259/pexels-photo-3699259.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
-    bestTime: "Year Round",
-    activities: ["Prayer", "Architecture Tour", "Cultural Experience"],
-    featured: true
-  },
-  {
-    id: 3,
-    name: "Jonha Falls",
-    location: "Ranchi",
-    description: "Also known as Gautamdhara, this beautiful waterfall is surrounded by dense forests.",
-    image: "https://images.pexels.com/photos/1693095/pexels-photo-1693095.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
-    bestTime: "July-October",
-    activities: ["Trekking", "Swimming", "Meditation"],
-    featured: false
-  }
-];
+import { MapPin, Clock, Camera, Info, Eye, Calendar } from 'lucide-react';
+import { attractions } from '../data/mockData';
+import { useState } from 'react';
+import Modal from './ui/Modal';
+import Slider from './ui/Slider';
+import Button from './ui/Button';
 
 const FeaturedAttractions: React.FC = () => {
+  const [selectedAttraction, setSelectedAttraction] = useState<any>(null);
+  const [isGalleryModalOpen, setIsGalleryModalOpen] = useState(false);
+
+  const handleViewGallery = (attraction: any) => {
+    setSelectedAttraction(attraction);
+    setIsGalleryModalOpen(true);
+  };
+
   return (
     <section id="attractions" className="py-20 bg-gradient-to-br from-green-50 to-blue-50">
       <div className="max-w-7xl mx-auto px-4">
@@ -128,14 +108,92 @@ const FeaturedAttractions: React.FC = () => {
                   <button className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105">
                     Plan Visit
                   </button>
-                  <button className="border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white px-8 py-3 rounded-full font-semibold transition-all duration-300">
+                  <Button
+                    onClick={() => handleViewGallery(attraction)}
+                    variant="outline"
+                    leftIcon={<Eye className="w-5 h-5" />}
+                  >
                     View Gallery
-                  </button>
+                  </Button>
                 </div>
               </div>
             </div>
           ))}
         </div>
+        
+        {/* Gallery Modal */}
+        <Modal
+          isOpen={isGalleryModalOpen}
+          onClose={() => setIsGalleryModalOpen(false)}
+          title={selectedAttraction?.name || 'Gallery'}
+          size="xl"
+        >
+          {selectedAttraction && (
+            <div className="space-y-6">
+              <Slider
+                autoPlay={true}
+                autoPlayInterval={4000}
+                className="h-96"
+              >
+                {selectedAttraction.gallery.map((image: string, index: number) => (
+                  <img
+                    key={index}
+                    src={image}
+                    alt={`${selectedAttraction.name} - Image ${index + 1}`}
+                    className="w-full h-96 object-cover"
+                  />
+                ))}
+              </Slider>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-2">
+                    <MapPin className="w-5 h-5 text-green-600" />
+                    <span className="font-semibold">Location:</span>
+                    <span>{selectedAttraction.location}</span>
+                  </div>
+                  
+                  <div className="flex items-center space-x-2">
+                    <Clock className="w-5 h-5 text-blue-600" />
+                    <span className="font-semibold">Timings:</span>
+                    <span>{selectedAttraction.timings}</span>
+                  </div>
+                  
+                  <div className="flex items-center space-x-2">
+                    <Calendar className="w-5 h-5 text-purple-600" />
+                    <span className="font-semibold">Best Time:</span>
+                    <span>{selectedAttraction.bestTime}</span>
+                  </div>
+                </div>
+                
+                <div className="space-y-4">
+                  <div>
+                    <span className="font-semibold">Entry Fee:</span>
+                    <span className="ml-2">{selectedAttraction.entryFee}</span>
+                  </div>
+                  
+                  <div>
+                    <span className="font-semibold">Activities:</span>
+                    <div className="flex flex-wrap gap-2 mt-2">
+                      {selectedAttraction.activities.map((activity: string, index: number) => (
+                        <span
+                          key={index}
+                          className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm"
+                        >
+                          {activity}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <p className="text-gray-700 leading-relaxed">
+                {selectedAttraction.description}
+              </p>
+            </div>
+          )}
+        </Modal>
       </div>
     </section>
   );

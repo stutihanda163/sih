@@ -1,7 +1,39 @@
 import React from 'react';
-import { Plane, Brain as Train, Car, MapPin, Calendar, Sun, Umbrella } from 'lucide-react';
+import { Plane, Train, Car, MapPin, Calendar, Sun, Umbrella } from 'lucide-react';
+import { weatherInfo } from '../data/mockData';
+import Accordion from './ui/Accordion';
 
 const TravelInfo: React.FC = () => {
+  const faqItems = [
+    {
+      id: 'permits',
+      title: 'Do I need any permits to visit Jharkhand?',
+      content: (
+        <p>Most tourist destinations in Jharkhand do not require special permits. However, for certain tribal areas and wildlife sanctuaries, you may need prior permission. It's recommended to check with local authorities or your tour operator.</p>
+      )
+    },
+    {
+      id: 'safety',
+      title: 'Is Jharkhand safe for tourists?',
+      content: (
+        <p>Jharkhand is generally safe for tourists. However, like any travel destination, it's advisable to take standard precautions, avoid isolated areas after dark, and stay informed about local conditions. Tourist areas are well-patrolled and safe.</p>
+      )
+    },
+    {
+      id: 'language',
+      title: 'What languages are spoken in Jharkhand?',
+      content: (
+        <p>Hindi is widely spoken and understood throughout Jharkhand. English is commonly used in tourist areas, hotels, and restaurants. Local tribal languages include Santali, Mundari, and Ho, but Hindi will suffice for most tourist interactions.</p>
+      )
+    },
+    {
+      id: 'currency',
+      title: 'What about money and payments?',
+      content: (
+        <p>Indian Rupee (INR) is the currency. ATMs are available in major cities and towns. Credit cards are accepted in hotels and restaurants in urban areas, but it's advisable to carry cash for rural areas and local markets.</p>
+      )
+    }
+  ];
   return (
     <section id="plan" className="py-20 bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4">
@@ -65,32 +97,16 @@ const TravelInfo: React.FC = () => {
             <h3 className="text-2xl font-bold text-green-400 mb-6">Weather & Best Time to Visit</h3>
             
             <div className="space-y-6">
-              <div className="p-6 bg-gradient-to-r from-orange-600 to-red-600 rounded-xl">
-                <div className="flex items-center space-x-3 mb-3">
-                  <Sun className="w-6 h-6 text-white" />
-                  <h4 className="text-xl font-semibold">Summer (March - June)</h4>
+              {weatherInfo.map((weather, index) => (
+                <div key={index} className={`p-6 bg-gradient-to-r ${weather.color} rounded-xl`}>
+                  <div className="flex items-center space-x-3 mb-3">
+                    <span className="text-2xl">{weather.icon}</span>
+                    <h4 className="text-xl font-semibold text-white">{weather.season}</h4>
+                  </div>
+                  <p className="text-white opacity-90 mb-2">Temperature: {weather.temperature}</p>
+                  <p className="text-white opacity-90">{weather.description}</p>
                 </div>
-                <p className="text-orange-100 mb-2">Temperature: 25°C - 42°C</p>
-                <p className="text-orange-100">Hot and dry. Good for indoor attractions and hill stations like Netarhat.</p>
-              </div>
-
-              <div className="p-6 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl">
-                <div className="flex items-center space-x-3 mb-3">
-                  <Umbrella className="w-6 h-6 text-white" />
-                  <h4 className="text-xl font-semibold">Monsoon (July - September)</h4>
-                </div>
-                <p className="text-blue-100 mb-2">Temperature: 22°C - 32°C</p>
-                <p className="text-blue-100">Perfect for waterfalls. Heavy rainfall makes the landscape lush and green.</p>
-              </div>
-
-              <div className="p-6 bg-gradient-to-r from-green-600 to-teal-600 rounded-xl">
-                <div className="flex items-center space-x-3 mb-3">
-                  <Calendar className="w-6 h-6 text-white" />
-                  <h4 className="text-xl font-semibold">Winter (October - February)</h4>
-                </div>
-                <p className="text-green-100 mb-2">Temperature: 8°C - 25°C</p>
-                <p className="text-green-100">Ideal time to visit. Pleasant weather perfect for all outdoor activities.</p>
-              </div>
+              ))}
             </div>
 
             {/* Quick Tips */}
@@ -112,6 +128,12 @@ const TravelInfo: React.FC = () => {
               </ul>
             </div>
           </div>
+        </div>
+        
+        {/* FAQ Section */}
+        <div className="mt-16">
+          <h3 className="text-2xl font-bold text-green-400 mb-8 text-center">Frequently Asked Questions</h3>
+          <Accordion items={faqItems} className="max-w-4xl mx-auto" />
         </div>
       </div>
     </section>

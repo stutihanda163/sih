@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Menu, X, MapPin, Phone, Mail } from 'lucide-react';
+import { navigationItems } from '../data/mockData';
+import Dropdown from './ui/Dropdown';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -44,18 +46,30 @@ const Header: React.FC = () => {
           </div>
 
           {/* Desktop Menu */}
-          <ul className="hidden lg:flex space-x-8 text-gray-700 font-medium">
-            <li><a href="#home" className="hover:text-green-600 transition-colors">Home</a></li>
-            <li><a href="#destinations" className="hover:text-green-600 transition-colors">Destinations</a></li>
-            <li><a href="#attractions" className="hover:text-green-600 transition-colors">Attractions</a></li>
-            <li><a href="#culture" className="hover:text-green-600 transition-colors">Culture</a></li>
-            <li><a href="#adventure" className="hover:text-green-600 transition-colors">Adventure</a></li>
-            <li><a href="#plan" className="hover:text-green-600 transition-colors">Plan Trip</a></li>
-            <li><a href="#contact" className="hover:text-green-600 transition-colors">Contact</a></li>
-          </ul>
+          <nav className="hidden lg:flex space-x-8 text-gray-700 font-medium" role="navigation">
+            {navigationItems.map((item) => (
+              <div key={item.id}>
+                {item.hasDropdown ? (
+                  <Dropdown
+                    trigger={<span>{item.label}</span>}
+                    items={item.dropdownItems || []}
+                  />
+                ) : (
+                  <a 
+                    href={item.href} 
+                    className="hover:text-green-600 transition-colors duration-200"
+                  >
+                    {item.label}
+                  </a>
+                )}
+              </div>
+            ))}
+          </nav>
 
           {/* Mobile Menu Button */}
           <button
+            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isMenuOpen}
             className="lg:hidden text-gray-700"
             onClick={toggleMenu}
           >
@@ -65,15 +79,33 @@ const Header: React.FC = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <ul className="lg:hidden mt-4 space-y-3 text-gray-700 font-medium">
-            <li><a href="#home" className="block py-2 hover:text-green-600 transition-colors">Home</a></li>
-            <li><a href="#destinations" className="block py-2 hover:text-green-600 transition-colors">Destinations</a></li>
-            <li><a href="#attractions" className="block py-2 hover:text-green-600 transition-colors">Attractions</a></li>
-            <li><a href="#culture" className="block py-2 hover:text-green-600 transition-colors">Culture</a></li>
-            <li><a href="#adventure" className="block py-2 hover:text-green-600 transition-colors">Adventure</a></li>
-            <li><a href="#plan" className="block py-2 hover:text-green-600 transition-colors">Plan Trip</a></li>
-            <li><a href="#contact" className="block py-2 hover:text-green-600 transition-colors">Contact</a></li>
-          </ul>
+          <nav className="lg:hidden mt-4 space-y-3 text-gray-700 font-medium" role="navigation">
+            {navigationItems.map((item) => (
+              <div key={item.id}>
+                <a 
+                  href={item.href} 
+                  className="block py-2 hover:text-green-600 transition-colors duration-200"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.label}
+                </a>
+                {item.hasDropdown && item.dropdownItems && (
+                  <div className="ml-4 mt-2 space-y-2">
+                    {item.dropdownItems.map((subItem) => (
+                      <a
+                        key={subItem.id}
+                        href={subItem.href}
+                        className="block py-1 text-sm text-gray-600 hover:text-green-600 transition-colors duration-200"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        {subItem.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </nav>
         )}
       </nav>
     </header>
