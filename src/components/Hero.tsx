@@ -4,15 +4,24 @@ import { MapPin, Calendar, Users } from 'lucide-react';
 const Hero: React.FC = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background YouTube Video */}
+      {/* Background Video */}
       <div className="absolute inset-0">
-        <iframe
-          className="w-full h-full"
-          src="https://www.youtube.com/embed/nmcXIrL820Q?autoplay=1&mute=1&loop=1&playlist=nmcXIrL820Q&controls=0&showinfo=0&modestbranding=1"
-          title="Discover Jharkhand"
-          frameBorder="0"
-          allow="autoplay; fullscreen"
-        />
+        <video 
+          autoPlay 
+          muted 
+          loop 
+          playsInline
+          className="w-full h-full object-cover"
+        >
+          <source src="https://player.vimeo.com/external/434045526.sd.mp4?s=c27eecc69a27dbc4ff2b87d38afc35f1a9e7c02d&profile_id=139&oauth2_token_id=57447761" type="video/mp4" />
+          <source src="https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4" type="video/mp4" />
+          {/* Fallback image if video doesn't load */}
+          <img 
+            src="https://images.pexels.com/photos/4386370/pexels-photo-4386370.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop"
+            alt="Jharkhand Forest Landscape"
+            className="w-full h-full object-cover"
+          />
+        </video>
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
       </div>
 
@@ -55,9 +64,31 @@ const Hero: React.FC = () => {
         </div>
       </div>
 
+      {/* Video Controls (Optional) */}
+      <div className="absolute bottom-20 right-8 z-20">
+        <button 
+          onClick={() => {
+            const video = document.querySelector('video');
+            if (video) {
+              if (video.paused) {
+                video.play();
+              } else {
+                video.pause();
+              }
+            }
+          }}
+          className="bg-white bg-opacity-20 hover:bg-opacity-30 backdrop-blur-sm text-white p-3 rounded-full transition-all duration-300"
+          aria-label="Play/Pause video"
+        >
+          <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+        </button>
+      </div>
+
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-         <div className="animate-bounce">
+        <div className="animate-bounce">
           <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
             <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
           </div>
