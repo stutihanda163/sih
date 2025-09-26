@@ -94,6 +94,7 @@ export const destinations: Destination[] = [
 ];
 
 export const tourPackages: TourPackage[] = [
+  // HERITAGE CATEGORY
   {
     id: 1,
     title: "Jharkhand Heritage Trail",
@@ -122,6 +123,60 @@ export const tourPackages: TourPackage[] = [
   },
   {
     id: 2,
+    title: "Ancient Temples & Monuments",
+    description: "Discover the architectural marvels and historical sites of Jharkhand",
+    image: "https://images.pexels.com/photos/2382681/pexels-photo-2382681.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+    duration: "6 Days / 5 Nights",
+    price: 18999,
+    rating: 4.6,
+    category: "heritage",
+    includes: ["Accommodation", "Meals", "Transportation", "Guide", "Entry Fees", "Cultural Shows"],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival in Jamshedpur",
+        activities: ["Airport pickup", "Jubilee Park visit", "Tata Steel Zoological Park"],
+        meals: ["Dinner"],
+        accommodation: "The Sonnet Hotel"
+      },
+      {
+        day: 2,
+        title: "Historical Exploration",
+        activities: ["Palace ruins tour", "Museum visit", "Local handicrafts shopping"],
+        meals: ["Breakfast", "Lunch", "Dinner"]
+      }
+    ]
+  },
+  {
+    id: 3,
+    title: "Tribal Culture Experience",
+    description: "Immerse yourself in the authentic tribal culture and traditions of Jharkhand",
+    image: "https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+    duration: "4 Days / 3 Nights",
+    price: 13999,
+    rating: 4.9,
+    category: "heritage",
+    includes: ["Accommodation", "Meals", "Transportation", "Cultural Guide", "Tribal Village Stay"],
+    itinerary: [
+      {
+        day: 1,
+        title: "Journey to Tribal Villages",
+        activities: ["Village visit", "Traditional dance performance", "Handicraft workshop"],
+        meals: ["Breakfast", "Lunch", "Dinner"],
+        accommodation: "Tribal Heritage Resort"
+      },
+      {
+        day: 2,
+        title: "Cultural Immersion",
+        activities: ["Traditional cooking class", "Art and craft learning", "Folk music evening"],
+        meals: ["Breakfast", "Lunch", "Dinner"]
+      }
+    ]
+  },
+
+  // ADVENTURE CATEGORY
+  {
+    id: 4,
     title: "Waterfall Adventure Package",
     description: "Experience the magnificent waterfalls and natural beauty of Jharkhand",
     image: "https://images.pexels.com/photos/1552058/pexels-photo-1552058.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
@@ -135,6 +190,218 @@ export const tourPackages: TourPackage[] = [
         day: 1,
         title: "Hundru Falls Exploration",
         activities: ["Waterfall trekking", "Photography session", "Natural pool swimming"],
+        meals: ["Breakfast", "Lunch", "Dinner"]
+      }
+    ]
+  },
+  {
+    id: 5,
+    title: "Rock Climbing & Trekking Expedition",
+    description: "Challenge yourself with rock climbing and trekking in Jharkhand's rugged terrain",
+    image: "https://images.pexels.com/photos/1365425/pexels-photo-1365425.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+    duration: "5 Days / 4 Nights",
+    price: 16999,
+    rating: 4.5,
+    category: "adventure",
+    includes: ["Accommodation", "Meals", "Transportation", "Climbing Gear", "Professional Guide", "Safety Equipment"],
+    itinerary: [
+      {
+        day: 1,
+        title: "Base Camp Setup",
+        activities: ["Equipment briefing", "Basic climbing training", "Fitness assessment"],
+        meals: ["Breakfast", "Lunch", "Dinner"],
+        accommodation: "Adventure Base Camp"
+      },
+      {
+        day: 2,
+        title: "Rock Climbing Day 1",
+        activities: ["Beginner routes", "Rappelling practice", "Navigation skills"],
+        meals: ["Breakfast", "Lunch", "Dinner"]
+      }
+    ]
+  },
+  {
+    id: 6,
+    title: "River Rafting & Cave Exploration",
+    description: "Navigate thrilling rapids and explore mysterious caves in Jharkhand",
+    image: "https://images.pexels.com/photos/2398220/pexels-photo-2398220.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+    duration: "3 Days / 2 Nights",
+    price: 11999,
+    rating: 4.6,
+    category: "adventure",
+    includes: ["Accommodation", "Meals", "Transportation", "Rafting Equipment", "Cave Gear", "Expert Guide"],
+    itinerary: [
+      {
+        day: 1,
+        title: "River Adventure",
+        activities: ["White water rafting", "Rapids navigation", "Riverside camping"],
+        meals: ["Breakfast", "Lunch", "Dinner"],
+        accommodation: "Riverside Camp"
+      },
+      {
+        day: 2,
+        title: "Cave Exploration",
+        activities: ["Cave trekking", "Underground formations", "Spelunking techniques"],
+        meals: ["Breakfast", "Lunch", "Dinner"]
+      }
+    ]
+  },
+
+  // WILDLIFE CATEGORY
+  {
+    id: 7,
+    title: "Betla National Park Safari",
+    description: "Discover diverse wildlife including tigers, elephants, and rare birds in Betla National Park",
+    image: "https://images.pexels.com/photos/1059823/pexels-photo-1059823.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+    duration: "4 Days / 3 Nights",
+    price: 17999,
+    rating: 4.8,
+    category: "wildlife",
+    includes: ["Accommodation", "Meals", "Transportation", "Safari Permits", "Nature Guide", "Binoculars"],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival at Betla",
+        activities: ["Check-in at forest lodge", "Evening safari", "Wildlife orientation"],
+        meals: ["Breakfast", "Lunch", "Dinner"],
+        accommodation: "Forest Lodge Betla"
+      },
+      {
+        day: 2,
+        title: "Tiger Tracking",
+        activities: ["Early morning safari", "Tiger tracking", "Bird watching session"],
+        meals: ["Breakfast", "Lunch", "Dinner"]
+      }
+    ]
+  },
+  {
+    id: 8,
+    title: "Palamau Wildlife Expedition",
+    description: "Explore the rich biodiversity of Palamau Tiger Reserve and surrounding forests",
+    image: "https://images.pexels.com/photos/631317/pexels-photo-631317.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+    duration: "5 Days / 4 Nights",
+    price: 21999,
+    rating: 4.7,
+    category: "wildlife",
+    includes: ["Accommodation", "All Meals", "Transportation", "Multiple Safaris", "Wildlife Expert", "Photography Guide"],
+    itinerary: [
+      {
+        day: 1,
+        title: "Palamau Entry",
+        activities: ["Forest department briefing", "Jeep safari", "Wildlife photography workshop"],
+        meals: ["Breakfast", "Lunch", "Dinner"],
+        accommodation: "Palamau Forest Resort"
+      },
+      {
+        day: 2,
+        title: "Deep Forest Safari",
+        activities: ["Elephant safari", "Leopard tracking", "Night safari"],
+        meals: ["Breakfast", "Lunch", "Dinner"]
+      }
+    ]
+  },
+  {
+    id: 9,
+    title: "Birding Paradise Tour",
+    description: "Specialized bird watching tour covering multiple habitats and endemic species",
+    image: "https://images.pexels.com/photos/1661546/pexels-photo-1661546.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+    duration: "6 Days / 5 Nights",
+    price: 19999,
+    rating: 4.9,
+    category: "wildlife",
+    includes: ["Accommodation", "Meals", "Transportation", "Birding Equipment", "Expert Ornithologist", "Bird Identification Guide"],
+    itinerary: [
+      {
+        day: 1,
+        title: "Wetland Birding",
+        activities: ["Early morning bird walk", "Wetland species identification", "Photography session"],
+        meals: ["Breakfast", "Lunch", "Dinner"],
+        accommodation: "Eco-Lodge"
+      },
+      {
+        day: 2,
+        title: "Forest Canopy Birds",
+        activities: ["Canopy tower birding", "Endemic species spotting", "Bird call identification"],
+        meals: ["Breakfast", "Lunch", "Dinner"]
+      }
+    ]
+  },
+
+  // SPIRITUAL CATEGORY
+  {
+    id: 10,
+    title: "Sacred Temples Journey",
+    description: "Visit the most revered temples and spiritual sites across Jharkhand",
+    image: "https://images.pexels.com/photos/3757951/pexels-photo-3757951.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+    duration: "7 Days / 6 Nights",
+    price: 16999,
+    rating: 4.8,
+    category: "spiritual",
+    includes: ["Accommodation", "Vegetarian Meals", "Transportation", "Temple Guide", "Puja Arrangements"],
+    itinerary: [
+      {
+        day: 1,
+        title: "Baidyanath Dham",
+        activities: ["Baidyanath Temple darshan", "Temple complex tour", "Evening aarti"],
+        meals: ["Breakfast", "Lunch", "Dinner"],
+        accommodation: "Dharamshala Deoghar"
+      },
+      {
+        day: 2,
+        title: "Rajrappa Temple",
+        activities: ["Chinnamasta Temple visit", "River confluence view", "Spiritual discourse"],
+        meals: ["Breakfast", "Lunch", "Dinner"]
+      }
+    ]
+  },
+  {
+    id: 11,
+    title: "Yoga & Meditation Retreat",
+    description: "Find inner peace through yoga, meditation, and spiritual practices",
+    image: "https://images.pexels.com/photos/1051838/pexels-photo-1051838.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+    duration: "5 Days / 4 Nights",
+    price: 14999,
+    rating: 4.9,
+    category: "spiritual",
+    includes: ["Accommodation", "Sattvic Meals", "Yoga Mat", "Meditation Cushion", "Spiritual Guide"],
+    itinerary: [
+      {
+        day: 1,
+        title: "Foundation & Assessment",
+        activities: ["Yoga assessment", "Meditation basics", "Pranayama introduction"],
+        meals: ["Breakfast", "Lunch", "Dinner"],
+        accommodation: "Ashram Retreat"
+      },
+      {
+        day: 2,
+        title: "Deepening Practice",
+        activities: ["Advanced asanas", "Silent meditation", "Spiritual discourse"],
+        meals: ["Breakfast", "Lunch", "Dinner"]
+      }
+    ]
+  },
+  {
+    id: 12,
+    title: "Pilgrimage Circuit",
+    description: "Complete spiritual circuit covering Jharkhand's most important pilgrimage sites",
+    image: "https://images.pexels.com/photos/2070033/pexels-photo-2070033.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+    duration: "8 Days / 7 Nights",
+    price: 22999,
+    rating: 4.7,
+    category: "spiritual",
+    includes: ["Accommodation", "All Meals", "Transportation", "Pilgrimage Guide", "Ritual Items", "Sacred Book"],
+    itinerary: [
+      {
+        day: 1,
+        title: "Deoghar Pilgrimage",
+        activities: ["Baba Baidyanath darshan", "Naulakha Mandir", "Spiritual bath"],
+        meals: ["Breakfast", "Lunch", "Dinner"],
+        accommodation: "Pilgrimage Lodge"
+      },
+      {
+        day: 2,
+        title: "Giddheshwar Temple",
+        activities: ["Ancient temple visit", "Cave meditation", "Holy water collection"],
         meals: ["Breakfast", "Lunch", "Dinner"]
       }
     ]
@@ -202,31 +469,40 @@ export const weatherInfo: WeatherInfo[] = [
 ];
 
 export const navigationItems: NavigationItem[] = [
-  { id: 'home', label: 'Home', href: '#home' },
+  {
+    id: 'home',
+    label: 'Home',
+    href: '#home',
+    hasDropdown: false
+  },
   {
     id: 'destinations',
     label: 'Destinations',
     href: '#destinations',
-    hasDropdown: true,
-    dropdownItems: [
-      { id: 'hill-stations', label: 'Hill Stations', href: '#hill-stations' },
-      { id: 'waterfalls', label: 'Waterfalls', href: '#waterfalls' },
-      { id: 'wildlife', label: 'Wildlife', href: '#wildlife' },
-      { id: 'religious', label: 'Religious Sites', href: '#religious' }
-    ]
+    hasDropdown: false
   },
   {
     id: 'packages',
-    label: 'Tour Packages',
+    label: 'Packages',
     href: '#packages',
-    hasDropdown: true,
-    dropdownItems: [
-      { id: 'adventure', label: 'Adventure Tours', href: '#adventure' },
-      { id: 'heritage', label: 'Heritage Tours', href: '#heritage' },
-      { id: 'family', label: 'Family Packages', href: '#family' }
-    ]
+    hasDropdown: false
   },
-  { id: 'attractions', label: 'Attractions', href: '#attractions' },
-  { id: 'plan', label: 'Plan Trip', href: '#plan' },
-  { id: 'contact', label: 'Contact', href: '#contact' }
+  {
+    id: 'attractions',
+    label: 'Attractions',
+    href: '#attractions',
+    hasDropdown: false
+  },
+  {
+    id: 'travel-info',
+    label: 'Travel Info',
+    href: '#travel-info',
+    hasDropdown: false
+  },
+  {
+    id: 'contact',
+    label: 'Contact',
+    href: '#contact',
+    hasDropdown: false
+  }
 ];

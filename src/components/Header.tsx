@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
-import { Menu, X, MapPin, Phone, Mail } from 'lucide-react';
+import { Menu, X, MapPin, Phone, Mail, LogOut } from 'lucide-react';
 import { navigationItems } from '../data/mockData';
-import Dropdown from './ui/Dropdown';
+import { useNavigate } from 'react-router-dom';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  
+  const handleLogout = () => {
+    localStorage.removeItem('isLoggedIn');
+    navigate('/login');
+  };
 
   return (
     <header className="bg-white shadow-lg relative z-50">
@@ -41,73 +47,64 @@ const Header: React.FC = () => {
             />
             <div>
               <h1 className="text-2xl font-bold text-green-800">Jharkhand Tourism</h1>
-              <p className="text-sm text-gray-600">The Land of Forests</p>
+              <p className="text-xs text-gray-500">Explore the Unexplored</p>
             </div>
           </div>
 
+          {/* Mobile Menu Button */}
+          <button 
+            className="lg:hidden text-gray-700 hover:text-green-600 focus:outline-none"
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+
           {/* Desktop Menu */}
-          <nav className="hidden lg:flex space-x-8 text-gray-700 font-medium" role="navigation">
+          <nav className="hidden lg:flex space-x-8 text-gray-700 font-medium items-center" role="navigation">
             {navigationItems.map((item) => (
               <div key={item.id}>
-                {item.hasDropdown ? (
-                  <Dropdown
-                    trigger={<span>{item.label}</span>}
-                    items={item.dropdownItems || []}
-                  />
-                ) : (
-                  <a 
-                    href={item.href} 
-                    className="hover:text-green-600 transition-colors duration-200"
-                  >
-                    {item.label}
-                  </a>
-                )}
+                <a 
+                  href={item.href} 
+                  className="hover:text-green-600 transition-colors duration-200"
+                >
+                  {item.label}
+                </a>
               </div>
             ))}
+            <button 
+              onClick={handleLogout} 
+              className="flex items-center text-gray-700 hover:text-green-600 transition-colors duration-200"
+            >
+              <LogOut size={18} className="mr-1" /> Logout
+            </button>
           </nav>
-
-          {/* Mobile Menu Button */}
-          <button
-            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={isMenuOpen}
-            className="lg:hidden text-gray-700"
-            onClick={toggleMenu}
-          >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
         </div>
+      </nav>
 
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <nav className="lg:hidden mt-4 space-y-3 text-gray-700 font-medium" role="navigation">
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <div className="lg:hidden bg-white border-t border-gray-200">
+          <nav className="flex flex-col px-4 py-2 space-y-2" role="navigation">
             {navigationItems.map((item) => (
               <div key={item.id}>
                 <a 
                   href={item.href} 
                   className="block py-2 hover:text-green-600 transition-colors duration-200"
-                  onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}
                 </a>
-                {item.hasDropdown && item.dropdownItems && (
-                  <div className="ml-4 mt-2 space-y-2">
-                    {item.dropdownItems.map((subItem) => (
-                      <a
-                        key={subItem.id}
-                        href={subItem.href}
-                        className="block py-1 text-sm text-gray-600 hover:text-green-600 transition-colors duration-200"
-                        onClick={() => setIsMenuOpen(false)}
-                      >
-                        {subItem.label}
-                      </a>
-                    ))}
-                  </div>
-                )}
               </div>
             ))}
+            <button 
+              onClick={handleLogout} 
+              className="flex items-center py-2 hover:text-green-600 transition-colors duration-200"
+            >
+              <LogOut size={18} className="mr-1" /> Logout
+            </button>
           </nav>
-        )}
-      </nav>
+        </div>
+      )}
     </header>
   );
 };
