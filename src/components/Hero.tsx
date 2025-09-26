@@ -4,36 +4,16 @@ import { MapPin, Calendar, Users } from 'lucide-react';
 const Hero: React.FC = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* YouTube Video Background */}
+      {/* Background YouTube Video */}
       <div className="absolute inset-0">
         <iframe
-          src="https://www.youtube.com/embed/nmcXIrL820Q?autoplay=1&mute=1&loop=1&playlist=nmcXIrL820Q&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&disablekb=1&fs=0&cc_load_policy=0&playsinline=1&enablejsapi=1"
-          title="Jharkhand Tourism Video"
-          className="w-full h-full object-cover scale-150 -translate-y-20"
-          style={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            width: '177.77777778vh',
-            height: '56.25vw',
-            minHeight: '100vh',
-            minWidth: '100vw',
-            transform: 'translate(-50%, -50%)',
-            pointerEvents: 'none'
-          }}
+          className="w-full h-full"
+          src="https://www.youtube.com/embed/nmcXIrL820Q?autoplay=1&mute=1&loop=1&playlist=nmcXIrL820Q&controls=0&showinfo=0&modestbranding=1"
+          title="Discover Jharkhand"
           frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
+          allow="autoplay; fullscreen"
         />
-        {/* Fallback background image */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: 'url(https://images.pexels.com/photos/4386370/pexels-photo-4386370.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop)',
-            zIndex: -1
-          }}
-        />
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
       </div>
 
       {/* Content */}
@@ -75,25 +55,9 @@ const Hero: React.FC = () => {
         </div>
       </div>
 
-      {/* Watch Full Video Button */}
-      <div className="absolute bottom-20 right-8 z-20">
-        <a
-          href="https://youtu.be/nmcXIrL820Q"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bg-red-600 hover:bg-red-700 backdrop-blur-sm text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 flex items-center space-x-2 shadow-lg hover:shadow-xl transform hover:scale-105"
-          aria-label="Watch full video on YouTube"
-        >
-          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M8 5v14l11-7z"/>
-          </svg>
-          <span>Watch Full Video</span>
-        </a>
-      </div>
-
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-        <div className="animate-bounce">
+         <div className="animate-bounce">
           <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
             <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
           </div>
