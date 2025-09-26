@@ -12,7 +12,7 @@ const Hero: React.FC = () => {
           loop 
           playsInline
           className="w-full h-full object-cover"
-          style={{ playbackRate: 0.75 }}
+          // style={{ playbackRate: 0.75 }}
           ref={(el) => {
             if (el) {
               el.playbackRate = 0.75;
